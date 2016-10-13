@@ -5,6 +5,9 @@
  */
 package telasGerente;
 
+import telas.EscolhaTipoUsuario;
+import telasCliente.LoginCliente;
+
 /**
  *
  * @author Coelho
@@ -47,6 +50,11 @@ public class MenuGerente extends javax.swing.JFrame {
         });
 
         btnLogoff.setText("Trocar de Conta");
+        btnLogoff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoffActionPerformed(evt);
+            }
+        });
 
         menuGerente.setText("Menu");
 
@@ -109,12 +117,22 @@ public class MenuGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        EscolhaTipoUsuario escolha = new EscolhaTipoUsuario();
+        this.setVisible(false);
+        escolha.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        // TODO add your handling code here:
+        CadastroCliente cadastroCliente = new CadastroCliente();
+        this.setVisible(false);
+        cadastroCliente.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
+
+    private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
+        LoginCliente loginCliente = new LoginCliente();
+        this.setVisible(false);
+        loginCliente.setVisible(true);
+    }//GEN-LAST:event_btnLogoffActionPerformed
 
     /**
      * @param args the command line arguments

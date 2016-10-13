@@ -5,6 +5,16 @@
  */
 package telasCliente;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import telas.EscolhaTipoUsuario;
+
 /**
  *
  * @author Coelho
@@ -54,6 +64,11 @@ public class LoginCliente extends javax.swing.JFrame {
         });
 
         btnEntrar.setText("Entrar");
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,10 +152,47 @@ public class LoginCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSenhaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
+        EscolhaTipoUsuario escolha = new EscolhaTipoUsuario();
+        this.setVisible(false);
+        escolha.setVisible(true);
         
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        File arquivo = new File("C:\\clientes.csv");
+        
+        String agencia = txtAgencia.getText();
+        String conta = txtConta.getText();
+        String senha = txtSenha.getText();
+        
+        try {
+            String linhas = new String();
+            
+            Scanner leitor = new Scanner(arquivo);
+            
+            while(leitor.hasNext()){
+                linhas = leitor.nextLine();
+                
+                String[] valores = linhas.split(";");
+                
+                if(valores[0].equals(agencia) && valores[1].
+                        equals(conta) && valores[2].equals(senha)){
+                    JOptionPane.showMessageDialog(null, "Encontrado");
+                    
+                    break;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Não Encontrado");
+                }
+            }
+            leitor.close();
+            
+            
+            
+        } catch (FileNotFoundException e) {
+            
+            System.out.println("Arquivo não encontrado");
+        }
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments

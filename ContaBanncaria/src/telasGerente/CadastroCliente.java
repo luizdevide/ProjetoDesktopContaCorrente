@@ -5,6 +5,10 @@
  */
 package telasGerente;
 
+import cliente.Cliente;
+import cliente.ClienteDAO;
+import java.io.PrintWriter;
+
 /**
  *
  * @author Coelho
@@ -43,7 +47,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         lblNovaConta = new javax.swing.JLabel();
         txtAgencia = new javax.swing.JTextField();
         txtConta = new javax.swing.JTextField();
-        btnSair = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         btnLogoff = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
 
@@ -73,14 +77,19 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        btnSair.setText("Salvar");
-        btnSair.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSairActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
         btnLogoff.setText("Cancelar");
+        btnLogoff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoffActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,7 +147,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnLogoff)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSair)
+                        .addComponent(btnSalvar)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -180,7 +189,7 @@ public class CadastroCliente extends javax.swing.JFrame {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSair)
+                    .addComponent(btnSalvar)
                     .addComponent(btnLogoff))
                 .addContainerGap())
         );
@@ -188,13 +197,24 @@ public class CadastroCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSairActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Cliente c = new Cliente();
+        c.setNome(txtNome.getText());
+        c.setRg(txtRg.getText());
+        c.setCpf(txtCpf.getText());
+        c.setEndereco(txtEndereco.getText());
+        ClienteDAO.llstClientes.add(c);
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContaActionPerformed
+
+    private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
+        MenuGerente menuGerente = new MenuGerente();
+        this.setVisible(false);
+        menuGerente.setVisible(true);
+    }//GEN-LAST:event_btnLogoffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -233,7 +253,7 @@ public class CadastroCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogoff;
-    private javax.swing.JButton btnSair;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblAgencia;

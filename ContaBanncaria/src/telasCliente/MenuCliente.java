@@ -5,6 +5,8 @@
  */
 package telasCliente;
 
+import telas.EscolhaTipoUsuario;
+
 /**
  *
  * @author Coelho
@@ -47,6 +49,11 @@ public class MenuCliente extends javax.swing.JFrame {
         });
 
         btnDepositar.setText("Depositar");
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
 
         btnSaldo.setText("Saldo");
 
@@ -60,6 +67,11 @@ public class MenuCliente extends javax.swing.JFrame {
         });
 
         btnLogoff.setText("Trocar de Conta");
+        btnLogoff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoffActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,14 +118,29 @@ public class MenuCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        // TODO add your handling code here:
+        EscolhaTipoUsuario escolha = new EscolhaTipoUsuario();
+        this.setVisible(false);
+        escolha.setVisible(true);
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnSacarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSacarActionPerformed
         // TODO add your handling code here:
         ValorSaque valorSaque = new ValorSaque();
+        this.setVisible(false);
         valorSaque.setVisible(true);
     }//GEN-LAST:event_btnSacarActionPerformed
+
+    private void btnLogoffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoffActionPerformed
+        LoginCliente loginCliente = new LoginCliente();
+        this.setVisible(false);
+        loginCliente.setVisible(true);        
+    }//GEN-LAST:event_btnLogoffActionPerformed
+
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        ValorDeposito valorDeposito = new ValorDeposito();
+        this.setVisible(false);
+        valorDeposito.setVisible(true);
+    }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**
      * @param args the command line arguments

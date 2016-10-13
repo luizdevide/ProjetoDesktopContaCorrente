@@ -1,6 +1,7 @@
 package telas;
 
 import telasCliente.LoginCliente;
+import telasGerente.LoginGerente;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -34,6 +35,7 @@ public class EscolhaTipoUsuario extends javax.swing.JFrame {
         btnGerente = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
         lblTipo = new javax.swing.JLabel();
+        btnSair = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -66,6 +68,13 @@ public class EscolhaTipoUsuario extends javax.swing.JFrame {
 
         lblTipo.setText("Escolha o tipo de Usuário:");
 
+        btnSair.setText("Sair do Sistema");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,6 +86,10 @@ public class EscolhaTipoUsuario extends javax.swing.JFrame {
                     .addComponent(btnCliente)
                     .addComponent(lblTipo))
                 .addContainerGap(107, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSair)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,22 +100,30 @@ public class EscolhaTipoUsuario extends javax.swing.JFrame {
                 .addComponent(btnGerente)
                 .addGap(35, 35, 35)
                 .addComponent(btnCliente)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addComponent(btnSair)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerenteActionPerformed
-        // TODO add your handling code here:
+        LoginGerente loginGerente = new LoginGerente();
+        this.setVisible(false);
+        loginGerente.setVisible(true);
     }//GEN-LAST:event_btnGerenteActionPerformed
 
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-        // TODO add your handling code here:
+        
         LoginCliente loginCliente = new LoginCliente();
-        this.setEnabled(false);
+        this.setVisible(false);
         loginCliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
+
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,6 +163,7 @@ public class EscolhaTipoUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnGerente;
+    private javax.swing.JButton btnSair;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel lblTipo;
     // End of variables declaration//GEN-END:variables
