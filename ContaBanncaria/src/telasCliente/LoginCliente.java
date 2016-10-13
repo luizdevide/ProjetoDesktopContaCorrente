@@ -177,7 +177,7 @@ public class LoginCliente extends javax.swing.JFrame {
                 
                 if(valores[0].equals(agencia) && valores[1].
                         equals(conta) && valores[2].equals(senha)){
-                    JOptionPane.showMessageDialog(null, "Encontrado");
+                    JOptionPane.showMessageDialog(null, "Cliente Encontrado");
                     
                     break;
                 }else{
